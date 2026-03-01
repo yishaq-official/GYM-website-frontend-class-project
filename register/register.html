@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBU Gym - Member Registration</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="register.css">
+</head>
+<body class="d-flex justify-content-center">
+
+    <div class="registration-container container">
+        
+        <header class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h3 fw-bold text-center"><span class="highlight"><i class="fas fa-dumbbell me-2"></i>DBU-</span>GYM Registration</h1>
+            <button id="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+        </header>
+
+        <div class="card p-4 p-md-5">
+            <h2 class="h5 fw-bold mb-3">Member Type Selection</h2>
+            
+            <div class="member-type-toggle mb-4 d-flex gap-3">
+                <button type="button" class="btn btn-outline-primary active" id="type-uni-btn" data-type="university">
+                    <i class="fas fa-university me-2"></i> University Member
+                </button>
+                <button type="button" class="btn btn-outline-primary" id="type-ext-btn" data-type="external">
+                    <i class="fas fa-user-friends me-2"></i> External Member
+                </button>
+            </div>
+            
+            <div class="mb-4 p-3 bg-light rounded" id="gymIdContainer">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <label class="form-label mb-1" style="color: var(--text-muted);">Generated Gym Member ID</label>
+                        <div id="gymIdDisplay">Fetching...</div>
+                    </div>
+                    <div class="text-end">
+                        <label class="form-label mb-1" style="color: var(--text-muted);">Estimated Total</label>
+                        <div id="priceDisplay" class="fw-bold fs-5 text-success">0 ETB</div>
+                    </div>
+                </div>
+            </div>
+
+            <form id="registrationForm" novalidate>
+                
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label for="fullName" class="form-label fw-semibold"  style="color: var(--text-main);">Full Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="fullName" required>
+                        <div class="invalid-feedback">Full Name is required (No numbers allowed).</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email" class="form-label fw-semibold" style="color: var(--text-main);">Email<span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="email" required>
+                        <div class="invalid-feedback">A valid Email is required.</div>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label for="password" class="form-label fw-semibold" style="color: var(--text-main);">Password<span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" id="password" required>
+                        
+                        <div class="password-requirements mt-2">
+                            <span class="requirement invalid" id="req-len"><i class="fas fa-circle"></i> 8+ Chars</span>
+                            <span class="requirement invalid" id="req-num"><i class="fas fa-circle"></i> Number & Symbol</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="phoneNumber" class="form-label fw-semibold" style="color: var(--text-main);">Phone Number</label>
+                        <input type="tel" class="form-control" id="phoneNumber" placeholder="09... or +251..." pattern="[0-9+]+" required>
+                        <div class="form-text small" style="color: var(--text-muted);">Ethio Telecom (09) or Safaricom (07)</div>
+                        <div class="invalid-feedback">Digits only.</div>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <label for="profileImage" class="form-label fw-semibold" style="color: var(--text-main);">Profile Picture</label>
+                        <input type="file" class="form-control" id="profileImage" accept="image/*">
+                        <div class="form-text " style="color: var(--text-muted);">Upload a photo (Max 1MB).</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="gender" class="form-label fw-semibold" style="color: var(--text-main);">Gender<span class="text-danger">*</span></label>
+                        <select class="form-select" id="gender" required>
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-12">
+                        <label for="membershipType" class="form-label fw-semibold" style="color: var(--text-main);">Membership Plan<span class="text-danger">*</span></label>
+                        <select class="form-select" id="membershipType" required>
+                            <option value="" disabled selected>Select Plan Duration</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="3Months">3 Months</option>
+                            <option value="6Months">6 Months</option>
+                            <option value="1Year">1 Year</option>
+                        </select>
+                        <div class="invalid-feedback">Membership Type is required.</div>
+                    </div>
+                </div>
+
+                <div id="uniFields">
+                    <h5 class="fw-bold mb-3 text-secondary">University Details</h5>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label for="uniID" class="form-label fw-semibold" style="color: var(--text-main);">University ID<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="uniID" required>
+                            <div class="invalid-feedback">University ID is required.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="department" class="form-label fw-semibold" style="color: var(--text-main);">Department/College<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="department" required>
+                            <div class="invalid-feedback">Department is required.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="extFields" class="d-none">
+                    <h5 class="fw-bold mb-3 text-secondary">External Member Details</h5>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label for="nationalID" class="form-label fw-semibold" style="color: var(--text-main);">National ID / Passport<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="nationalID">
+                            <div class="invalid-feedback">National ID or Passport is required.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="address" class="form-label fw-semibold" style="color: var(--text-main);">Address<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="address">
+                            <div class="invalid-feedback">Address is required.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr class="mb-4">
+
+                <button type="submit" class="btn btn-submit w-100 mb-3"><i class="fas fa-credit-card me-2"></i> Proceed to Payment</button>
+
+                <div class="text-center">
+                    <span style="color: var(--text-main);">Already have an account? </span>
+                    <a href="../login/login.html" class="auth-link">Login here</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="paymentModal" data-bs-backdrop="static" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content overflow-hidden border-0" style="min-height: 520px;">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold">Secure Checkout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body pt-2 position-relative">
+                    
+                    <div class="modal-body-content">
+                        <div class="d-flex justify-content-between p-3 mb-3 bg-light rounded" style="color: #333;">
+                            <span class="small">Total</span><span class="fw-bold" id="modalPayAmount">300 ETB</span>
+                        </div>
+
+                        <div class="payment-methods-grid">
+                            <div class="method-card active" data-method="card"><i class="fas fa-credit-card fa-lg mb-2"></i><br><small>Card</small></div>
+                            <div class="method-card" data-method="telebirr"><i class="fas fa-mobile-alt fa-lg mb-2" style="color: #00A3E0;"></i><br><small>Telebirr</small></div>
+                            <div class="method-card" data-method="mpesa"><i class="fas fa-sim-card fa-lg mb-2" style="color: #43B02A;"></i><br><small>M-Pesa</small></div>
+                            <div class="method-card" data-method="cbe"><i class="fas fa-university fa-lg mb-2" style="color: #6A1B9A;"></i><br><small>CBE</small></div>
+                        </div>
+
+                        <div id="section-card" class="payment-form-section active">
+                            <div class="mb-2">
+                                <label class="small fw-bold mb-1">Card Number</label>
+                                <input type="text" class="form-control" placeholder="0000 0000 0000 0000" id="inputCardNum" maxlength="19">
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <label class="small fw-bold mb-1">Expiry</label>
+                                    <input type="text" class="form-control" placeholder="MM/YY">
+                                </div>
+                                <div class="col-6">
+                                    <label class="small fw-bold mb-1">CVV</label>
+                                    <input type="password" class="form-control" placeholder="123">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="section-telebirr" class="payment-form-section">
+                            <label class="small fw-bold mb-1" style="color:#00A3E0">Telebirr Number</label>
+                            <input type="tel" class="form-control" id="payPhoneTele" placeholder="09... / +2519..." maxlength="13">
+                        </div>
+                        <div id="section-mpesa" class="payment-form-section">
+                            <label class="small fw-bold mb-1" style="color:#43B02A">Safaricom Number</label>
+                            <input type="tel" class="form-control" id="payPhoneMpesa" placeholder="07... / +2517..." maxlength="13">
+                        </div>
+                        <div id="section-cbe" class="payment-form-section">
+                            <label class="small fw-bold mb-1" style="color:#6A1B9A">CBE Account</label>
+                            <input 
+                                type="text" 
+                                inputmode="numeric" 
+                                class="form-control font-monospace" 
+                                id="payAccountCbe" 
+                                placeholder="1000..." 
+                                maxlength="13" 
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            <small class="text-muted d-block mt-1">13 digits starting with 1000. No negative numbers.</small>
+                        </div>
+                        <button id="initiatePayBtn" class="btn btn-submit w-100 mt-4 py-2">Pay Securely</button>
+                    </div>
+
+                    <div id="mainSuccess" class="d-none h-100 d-flex flex-column align-items-center justify-content-center text-center"><i class="fas fa-check-circle fa-5x text-success mb-3"></i><h3>Success!</h3></div>
+
+                    <div id="gatewayOverlay" class="gateway-overlay">
+                        <div class="gateway-logo" id="gwLogo"></div>
+                        <h4 class="fw-bold mb-2" id="gwTitle">Gateway</h4>
+                        <p id="gwMessage" class="text-center px-4 mb-4 small" style="opacity: 0.8;">Loading...</p>
+                        
+                        <input type="password" id="gwInput" class="form-control gateway-pin-input" placeholder="PIN">
+                        <div id="gwErrorMsg" class="text-danger small mb-2 text-center" style="display:none; font-weight:bold;"></div>
+                        
+                        <div class="d-flex gap-2 w-100 justify-content-center px-4 mt-2">
+                            <button class="btn btn-light w-50" id="gwCancelBtn">Cancel</button>
+                            <button class="btn btn-primary w-50 btn-confirm" id="gwConfirmBtn">Confirm</button>
+                        </div>
+                    </div>
+
+                    <div id="customAlert">
+                        <div class="custom-alert-box">
+                            <div class="custom-alert-header"><i id="alertIcon" class="fas fa-exclamation-circle fa-lg"></i></div>
+                            <div class="custom-alert-body">
+                                <h5 id="alertTitle" class="fw-bold mb-2">Error</h5>
+                                <p id="alertMsg" class="small text-muted mb-4">Message goes here</p>
+                                <button id="alertBtn" class="btn btn-dark w-100">Try Again</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="payment.js"></script>
+    <script src="register.js"></script>
+</body>
+</html>

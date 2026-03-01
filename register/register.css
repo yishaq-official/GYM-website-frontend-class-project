@@ -1,0 +1,138 @@
+        /* ============================================================ */
+        /* 1. ORIGINAL REGISTRATION STYLES (PRESERVED)                  */
+        /* ============================================================ */
+        :root {
+            --primary-color: #51CCF9;
+            --primary-dark: #3db0da; 
+            --bg-body: #f8f9fa;
+            --bg-card: #ffffff;
+            --text-main: #212529;
+            --text-muted: #6c757d;
+            --input-bg: #fff;
+            --input-border: #ced4da;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+
+            /* Brand Colors */
+            --telebirr-blue: #00A3E0;
+            --safaricom-green: #43B02A;
+            --cbe-purple: #6A1B9A;
+        }
+
+        body.dark-mode {
+            --bg-body: #121212;
+            --bg-card: #252525;
+            --text-main: #f8f9fa;
+            --text-muted: #adb5bd;
+            --input-bg: #2b2b2b;
+            --input-border: #444;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: var(--text-main); transition: background-color 0.3s, color 0.3s; }
+        .highlight { color: var(--primary-color); }
+        .registration-container { max-width: 800px; margin-top: 50px; margin-bottom: 50px; }
+        .card { background-color: var(--bg-card); border: 1px solid var(--input-border); border-radius: 12px; box-shadow: 0 10px 25px var(--shadow-color); transition: background-color 0.3s, border-color 0.3s; }
+
+        .form-control, .form-select { background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-main); border-radius: 8px; padding: 0.75rem 1rem; transition: border-color 0.3s, box-shadow 0.3s; }
+        .form-control:focus, .form-select:focus { border-color: var(--primary-color); box-shadow: 0 0 0 0.25rem rgba(81, 204, 249, 0.5); background-color: var(--input-bg); color: var(--text-main); }
+        
+        .member-type-toggle .btn { border-radius: 8px; font-weight: 600; transition: all 0.3s ease; }
+        .member-type-toggle .btn-outline-primary { border-color: var(--primary-color); color: var(--primary-color); }
+        .member-type-toggle .btn-outline-primary.active { background-color: var(--primary-color); color: #000; box-shadow: 0 4px 8px rgba(81, 204, 249, 0.3); }
+
+        .btn-submit { background-color: var(--primary-color); color: #000; font-weight: bold; border: none; border-radius: 8px; padding: 0.75rem 1.5rem; transition: all 0.3s ease; }
+        .btn-submit:hover { background-color: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(81, 204, 249, 0.4); color: #000; }
+        
+        #theme-toggle { background: none; border: none; color: var(--text-main); font-size: 1.2rem; padding: 5px; transition: color 0.3s; }
+        #theme-toggle:hover { color: var(--primary-color); }
+
+        #gymIdDisplay { font-family: 'Courier New', Courier, monospace; font-weight: bold; font-size: 1.1rem; background-color: var(--bg-alt, #f9f9f9); padding: 8px; border-radius: 6px; color: #333; }
+        
+        .password-requirements { font-size: 0.85rem; margin-top: 5px; color: var(--text-muted); }
+        .requirement { margin-right: 10px; display: inline-block; }
+        .requirement.valid { color: #198754; } 
+        .requirement.invalid { color: #dc3545; } 
+        .auth-link { color: var(--primary-color); text-decoration: none; font-weight: 600; }
+        .auth-link:hover { text-decoration: underline; }
+
+        /* ============================================================ */
+        /* 2. PAYMENT MODAL STYLES (APPENDED ONLY)                      */
+        /* ============================================================ */
+        .payment-methods-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+        .method-card { border: 1px solid var(--input-border); border-radius: 8px; padding: 10px 5px; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--bg-card); color: var(--text-main); opacity: 0.6; }
+        .method-card:hover { transform: translateY(-3px); opacity: 1; }
+        .method-card.active { opacity: 1; border-width: 2px; font-weight: bold; background-color: var(--bg-body); }
+        
+        .method-card[data-method="telebirr"].active { border-color: var(--telebirr-blue); color: var(--telebirr-blue); }
+        .method-card[data-method="mpesa"].active { border-color: var(--safaricom-green); color: var(--safaricom-green); }
+        .method-card[data-method="cbe"].active { border-color: var(--cbe-purple); color: var(--cbe-purple); }
+        .method-card[data-method="card"].active { border-color: var(--text-main); }
+
+        /* --- Credit Card Section Theme --- */
+        #section-card.active {
+            background: linear-gradient(145deg, rgba(0,0,0,0.02), rgba(0,0,0,0.05));
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid var(--input-border);
+            margin-bottom: 15px;
+        }
+        body.dark-mode #section-card.active {
+            background: linear-gradient(145deg, #2a2a2a, #333);
+            border-color: #444;
+        }
+        body.dark-mode .form-control::placeholder { color: #aaa; opacity: 1; }
+
+        /* --- Gateway Popup --- */
+        .gateway-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-card);
+            z-index: 1055;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            animation: slideUp 0.3s ease-out;
+        }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .gateway-logo {
+            width: 70px; height: 70px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px; color: #fff; font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        
+        .gateway-pin-input {
+            letter-spacing: 5px; font-size: 1.5rem; text-align: center;
+            border: 2px solid var(--input-border);
+            border-radius: 10px; width: 60%; margin-bottom: 20px;
+            background: var(--input-bg); color: var(--text-main);
+        }
+        .gateway-pin-input:focus { outline: none; border-color: #999; }
+
+        .gateway-overlay.theme-telebirr .gateway-logo { background: var(--telebirr-blue); }
+        .gateway-overlay.theme-telebirr .btn-confirm { background: var(--telebirr-blue); border: none; }
+        .gateway-overlay.theme-telebirr .gateway-pin-input:focus { border-color: var(--telebirr-blue); box-shadow: 0 0 0 3px rgba(0, 163, 224, 0.2); }
+        
+        .gateway-overlay.theme-mpesa .gateway-logo { background: var(--safaricom-green); }
+        .gateway-overlay.theme-mpesa .btn-confirm { background: var(--safaricom-green); border: none; }
+        .gateway-overlay.theme-mpesa .gateway-pin-input:focus { border-color: var(--safaricom-green); box-shadow: 0 0 0 3px rgba(67, 176, 42, 0.2); }
+        
+        .gateway-overlay.theme-cbe .gateway-logo { background: var(--cbe-purple); }
+        .gateway-overlay.theme-cbe .btn-confirm { background: var(--cbe-purple); border: none; }
+        .gateway-overlay.theme-cbe .gateway-pin-input:focus { border-color: var(--cbe-purple); box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.2); }
+
+        .btn-confirm { color: white; font-weight: bold; transition: opacity 0.2s; }
+        .btn-confirm:hover { opacity: 0.9; }
+
+        .payment-form-section { display: none; }
+        .payment-form-section.active { display: block; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+        #customAlert { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(2px); }
+        .custom-alert-box { background: #fff; width: 90%; max-width: 320px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.3); animation: popIn 0.2s; }
+        .custom-alert-header { padding: 15px; color: white; text-align: center; font-size: 1.2rem; }
+        .custom-alert-body { padding: 20px; text-align: center; color: #333; }
+        @keyframes popIn { from{transform:scale(0.8);opacity:0;} to{transform:scale(1);opacity:1;} }
+    

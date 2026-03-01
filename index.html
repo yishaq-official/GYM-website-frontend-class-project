@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife Gym - Stronger Every Day</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand logo" href="#"><span class="highlight"><i class="fas fa-dumbbell me-2"></i>DBU</span>GYM</a>
+            
+            <div class="d-flex align-items-center order-lg-3 ms-3">
+                <button id="theme-toggle" class="btn btn-link nav-icon" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#apparatus">Apparatus</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="./login/login.html" class="btn btn-custom-outline btn-sm mt-1 mt-lg-0">Login / Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero d-flex align-items-center">
+        <div class="hero-overlay"></div>
+        <div class="container text-center hero-content" data-aos="zoom-in" data-aos-duration="1000">
+            <h1 class="display-3 fw-bold">Build Your <span class="highlight">Dream Body</span></h1>
+            <p class="lead mb-4">State of the art equipment, expert trainers, and a community that supports your goals.</p>
+            <a href="#pricing" class="btn btn-custom-primary btn-lg">Join Now</a>
+        </div>
+    </section>
+
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                    <h2 class="section-title text-start">About Us</h2>
+                    <p class="text-muted">At Dbu-Gym, we believe fitness is not just a hobby, but a lifestyle. we have helped thousands of members achieve their physical and mental potential.</p>
+                    <p class="text-muted">Whether you are a beginner or a pro athlete, our facility is designed to cater to your needs with 24/7 access and certified personal trainers.</p>
+                    <div class="mt-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-check-circle highlight me-2"></i> <span>Certified Trainers</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle highlight me-2"></i> <span>Modern Equipment</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="img-fluid rounded-4 shadow-lg hover-scale" alt="Gym Trainer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apparatus" class="section-padding bg-alt">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">World-Class Apparatus</h2>
+                <p class="text-muted">Train with the best equipment industry standards have to offer.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="apparatus-card">
+                        <i class="fas fa-dumbbell app-icon"></i>
+                        <h3>Free Weights</h3>
+                        <p>Dumbbells up to 150lbs, Olympic barbells, and calibrated plates.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="apparatus-card">
+                        <i class="fas fa-running app-icon"></i>
+                        <h3>Cardio Zone</h3>
+                        <p>Latest treadmills, stair masters, and rowers with screens.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="apparatus-card">
+                        <i class="fas fa-cogs app-icon"></i>
+                        <h3>Cable Machines</h3>
+                        <p>Functional trainers to target every muscle group safely.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="apparatus-card">
+                        <i class="fas fa-child app-icon"></i>
+                        <h3>Calisthenics</h3>
+                        <p>Pull-up bars and dip stations for bodyweight mastery.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="apparatus-card">
+                        <i class="fas fa-fist-raised app-icon"></i>
+                        <h3>Combat Zone</h3>
+                        <p>Heavy bags and a boxing ring for high-intensity conditioning.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="apparatus-card">
+                        <i class="fas fa-hot-tub app-icon"></i>
+                        <h3>Recovery</h3>
+                        <p>Massage guns and saunas for post-workout care.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Choose Your Plan</h2>
+            </div>
+            
+            <div class="staff-banner mb-5" data-aos="flip-up">
+                <i class="fas fa-id-badge"></i>
+                <span><strong>Staff Member?</strong> Log in with your employee or student ID to apply a 20% discount.</span>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-card h-100">
+                        <h3>Day Pass</h3>
+                        <div class="price">$15<span>/day</span></div>
+                        <p class="plan-desc">Perfect for travelers.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li><i class="fas fa-check text-success"></i> Single Day Access</li>
+                            <li><i class="fas fa-check text-success"></i> Locker Room Access</li>
+                            <li><i class="fas fa-times text-danger"></i> Guest Pass</li>
+                        </ul>
+                        <a href="/register/register.html"><button class="btn btn-custom-outline w-100 mt-auto">Get Day Pass</button></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pricing-card h-100">
+                        <h3>Monthly</h3>
+                        <div class="price">$45<span>/month</span></div>
+                        <p class="plan-desc">Flexible commitment.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li><i class="fas fa-check text-success"></i> 24/7 Gym Access</li>
+                            <li><i class="fas fa-check text-success"></i> Free Group Classes</li>
+                            <li><i class="fas fa-check text-success"></i> 1 Guest Pass/mo</li>
+                        </ul>
+                        <a href="/register/register.html"><button class="btn btn-custom-outline w-100 mt-auto">Join Monthly</button></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="pricing-card featured h-100 position-relative overflow-hidden">
+                        <div class="badge-ribbon">Best Value</div>
+                        <h3>Yearly</h3>
+                        <div class="price">$450<span>/year</span></div>
+                        <p class="plan-desc">Save 2 months' fees.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li><i class="fas fa-check text-success"></i> <span class="highlight">All Monthly Perks</span></li>
+                            <li><i class="fas fa-check text-success"></i> Private Intro Session</li>
+                            <li><i class="fas fa-check text-success"></i> Unlimited Guest Passes</li>
+                        </ul>
+                        <a href="/register/register.html"><button class="btn btn-custom-primary w-100 mt-auto">Go Yearly</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding bg-alt">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Get In Touch</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="zoom-in">
+                    <form class="contact-form p-4 p-md-5 rounded-4 shadow" >
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="John Doe">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-custom-primary px-5">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container text-center text-md-start">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h3 class="fw-bold"><span class="highlight"><i class="fas fa-dumbbell me-2"></i>DBU</span>GYM</h3>
+                    <p class="text-secondary">Making the world stronger, one rep at a time.</p>
+                </div>
+                <div class="col-md-6 mb-4 text-center text-md-end">
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/" class="text-white me-3 fs-4 hover-highlight"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/" class="text-white me-3 fs-4 hover-highlight"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.x.com/" class="text-white fs-4 hover-highlight"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <p class="text-center text-secondary small">&copy; 2025 Dbu-Gym. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
