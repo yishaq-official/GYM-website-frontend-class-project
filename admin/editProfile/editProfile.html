@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBU Gym - Admin Settings</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./editProfile.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid container">
+            <a class="navbar-brand fw-bold fs-4" href="#">
+                <span class="highlight"><i class="fas fa-dumbbell me-2"></i>DBU</span> Gym
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="adminNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="../adminPage.html"><i class="fas fa-chart-line me-1"></i> Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../adminPage.html"><i class="fas fa-users me-1"></i> Members</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../settings/admin-settings.html"><i class="fas fa-cogs me-1"></i> Settings</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="#"><i class="fas fa-user-cog me-1"></i> Profile</a></li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <button id="theme-toggle" aria-label="Toggle Dark Mode" class="mx-2">
+                        <i class="fas fa-moon"></i>
+                    </button>
+
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary rounded-pill dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="profileNameDisplay">
+                            <i class="fas fa-user-shield me-1"></i> Admin
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="../adminPage.html"><i class="fas fa-chart-line me-2"></i> Dashboard</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><button class="dropdown-item text-danger" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i> Logout</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        <h1 class="h3 fw-bold mb-4">Admin Profile & System Settings</h1>
+        
+        <div id="saveAlert" class="alert alert-success d-none" role="alert">
+            <i class="fas fa-check-circle me-2"></i> Changes saved successfully!
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card p-4 text-center mb-4">
+                    <div id="profilePicturePreview" class="mx-auto mb-3">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h5 class="fw-bold" id="adminNameHeader" style="color: var(--text-main);">Loading...</h5>
+                    <p class="small mb-3" id="adminIdHeader" style="color: var(--text-muted);">ID: ...</p>
+
+                    <input type="file" class="form-control mb-3" id="profilePictureInput" accept="image/*">
+                    <button id="btnUpdatePicture" class="btn btn-outline-primary w-100 mb-4">
+                        <i class="fas fa-upload me-2"></i> Update Picture
+                    </button>
+                </div>
+                
+                <div class="card p-4">
+                    <h2 class="h5 fw-bold mb-3" style="color: var(--text-main);"><i class="fas fa-key me-2"></i> Change Password</h2>
+                    <form id="passwordForm">
+                        <div id="passwordAlert" class="alert d-none" role="alert"></div>
+                        <div class="mb-3">
+                            <label for="currentPassword" class="form-label" style="color: var(--text-muted);">Current Password</label>
+                            <input type="password" class="form-control" id="currentPassword" style="background-color: var(--input-bg); color:var(--text-main)" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label" style="color: var(--text-muted);">New Password</label>
+                            <input type="password" class="form-control" id="newPassword" style="background-color: var(--input-bg); color:var(--text-main)" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="confirmNewPassword" class="form-label" style="color: var(--text-muted); ">Confirm New Password</label>
+                            <input type="password" class="form-control" id="confirmNewPassword" style="background-color: var(--input-bg); color:var(--text-main)" required>
+                        </div>
+                        <button type="submit" class="btn btn-warning w-100">
+                            <i class="fas fa-lock me-2"></i> Update Password
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="card p-4 mb-4">
+                    <h2 class="h5 fw-bold mb-3" style="color: var(--text-main);"><i class="fas fa-user-cog me-2" ></i> Admin Profile Information</h2>
+                    <form id="profileForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="fullName" class="form-label" style="color: var(--text-main);">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="username" class="form-label" style="color: var(--text-main);">Username</label>
+                                <input type="text" class="form-control" id="username" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label" style="color: var(--text-main);">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label" style="color: var(--text-main);">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="adminId" class="form-label" style="color: var(--text-main);">Role ID (Read Only)</label>
+                                <input type="text" class="form-control" id="adminId" style="color: var(--text-muted);" readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="role" class="form-label" style="color: var(--text-main);">Position (Read Only)</label>
+                                <input type="text" class="form-control" id="role" style="color: var(--text-muted);" readonly>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-4 w-100">
+                            <i class="fas fa-save me-2"></i> Save Profile Changes
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="card p-4">
+                    <h2 class="h5 fw-bold mb-3" style="color: var(--text-main);"><i class="fas fa-sliders-h me-2" ></i> Business Configuration</h2>
+                    <form id="settingsForm">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="announcementMessage" class="form-label" style="color: var(--text-main);">Announcements Message (User Dashboard)</label>
+                                <textarea class="form-control" id="announcementMessage" rows="2"></textarea>
+                            </div>
+                            
+                            <hr class="mt-4 mb-3">
+                            
+                            <h3 class="h6 fw-bold mb-2" style="color: var(--text-main);">Default Membership Pricing (ETB)</h3>
+                            <div class="col-md-3 col-6">
+                                <label for="priceMonthly" class="form-label" style="color: var(--text-main);">Monthly</label>
+                                <input type="number" class="form-control" id="priceMonthly" min="0" required>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <label for="priceThreeMonths" class="form-label" style="color: var(--text-main);">3 Months</label>
+                                <input type="number" class="form-control" id="priceThreeMonths" min="0" required>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <label for="priceSixMonths" class="form-label" style="color: var(--text-main);">6 Months</label>
+                                <input type="number" class="form-control" id="priceSixMonths" min="0" required>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <label for="priceYearly" class="form-label" style="color: var(--text-main);">Yearly</label>
+                                <input type="number" class="form-control" id="priceYearly" min="0" required>
+                            </div>
+
+                            <div class="col-12 mt-4">
+                                <label for="openingHours" class="form-label" style="color: var(--text-main);">Gym Opening Hours</label>
+                                <input type="text" class="form-control" id="openingHours" required>
+                                <small style="color: var(--text-muted);">E.g., Mon-Fri: 6am - 10pm, Sat-Sun: 8am - 6pm</small>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-info text-white mt-4 w-100">
+                            <i class="fas fa-sliders-h me-2"></i> Update Business Config
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+        <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container text-center text-md-start">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h3 class="fw-bold">DBU<span class="highlight">GYM</span></h3>
+                    <p class="text-secondary">Making the world stronger, one rep at a time.</p>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <p class="text-center text-secondary small">&copy; 2023 DBU-Gym. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="./editProfile.js"></script>
+</body>
+</html>
