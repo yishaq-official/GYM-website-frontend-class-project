@@ -44,3 +44,13 @@
         .table-hover > tbody > tr:hover > * { color: var(--primary-color); background-color: rgba(81, 204, 249, 0.05); }
         .table thead th { background-color: var(--bg-table-header); color: var(--text-main); border-bottom-color: var(--input-border); }
 
+                /* Pagination */
+        .page-link { color: var(--primary-color); background-color: var(--bg-card); border-color: var(--input-border); }
+        .page-link:hover { color: var(--primary-dark); background-color: var(--bg-table-header); }
+        .page-item.active .page-link { background-color: var(--primary-color); border-color: var(--primary-color); color: #000; }
+        .page-item.disabled .page-link { color: var(--text-muted); background-color: var(--bg-body); }
+
+        /* Forms */
+        .form-control, .form-select { background-color: var(--bg-card); border-color: var(--input-border); color: var(--text-main); }
+        .form-control:focus, .form-select:focus { background-color: var(--bg-card); color: var(--text-main); border-color: var(--primary-color); box-shadow: 0 0 0 0.25rem rgba(81, 204, 249, 0.25); }
+   
