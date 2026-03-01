@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBU Gym Admin - System Settings</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./admin-settings.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #212529;">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../adminPage.html">
+                <i class="fas fa-dumbbell me-2 text-info"></i>DBU Gym Admin Dashboard
+            </a>
+            <span class="navbar-text text-white-50">System Settings</span>
+            <a href="../adminPage.html" class="btn btn-sm btn-outline-light ms-3">Back to Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="h3 mb-1"><i class="fas fa-cog me-2 text-muted"></i>Configuration</h2>
+                <p class="text-muted mb-0">Review and update operational parameters for the system.</p>
+            </div>
+            <div class="d-flex gap-2">
+                <button type="button" class="btn btn-outline-secondary" onclick="window.location.reload()">
+                    <i class="fas fa-sync-alt me-2"></i>Reload
+                </button>
+                <button type="button" class="btn btn-primary" id="saveBtn">
+                    <span class="spinner-border spinner-border-sm d-none" id="saveSpinner" role="status"></span>
+                    <i class="fas fa-save me-2" id="saveIcon"></i>Save Changes
+                </button>
+            </div>
+        </div>
+
+        <form id="settingsForm">
+            <div class="row">
+                
+                <div class="col-lg-8">
+                    
+                    <div class="card settings-card">
+                        <div class="card-header">
+                            <i class="fas fa-desktop section-icon"></i>General System Settings
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="systemName" class="form-label">System Name</label>
+                                    <input type="text" class="form-control" id="systemName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="systemLogo" class="form-label">System Logo</label>
+                                    <input type="file" class="form-control" id="systemLogo" accept="image/*" disabled>
+                                    <small class="text-muted">(Upload disabled in simulated backend)</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="language" class="form-label">Default Language</label>
+                                    <select class="form-select" id="language">
+                                        <option value="en">English (US)</option>
+                                        <option value="am">Amharic</option>
+                                        <option value="es">Spanish</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="timezone" class="form-label">Default Timezone</label>
+                                    <select class="form-select" id="timezone">
+                                        <option value="UTC">UTC</option>
+                                        <option value="UTC+3">EAT (UTC+3)</option>
+                                        <option value="EST">EST (UTC-5)</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="maintenanceMode">
+                                        <label class="form-check-label fw-bold" for="maintenanceMode">Maintenance Mode</label>
+                                        <div class="form-text">System access restricted to administrators.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card settings-card">
+                        <div class="card-header">
+                            <i class="fas fa-shield-alt section-icon"></i>Security Settings
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="form-check form-switch mb-4">
+                                <input class="form-check-input" type="checkbox" role="switch" id="twoFA">
+                                <label class="form-check-label fw-bold" for="twoFA">Enable Two-Factor Authentication (2FA)</label>
+                            </div>
+                            
+                            <h6 class="fw-bold text-muted mb-3">PASSWORD POLICY</h6>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-4">
+                                    <label for="minPassLength" class="form-label">Min Length</label>
+                                    <input type="number" class="form-control" id="minPassLength" min="6" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="passExpiry" class="form-label">Expiry (Days)</label>
+                                    <input type="number" class="form-control" id="passExpiry" min="1" required>
+                                </div>
+                                <div class="col-md-4 d-flex align-items-end">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="specialChars">
+                                        <label class="form-check-label" for="specialChars">Require Symbols</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h6 class="fw-bold text-muted mb-3">SESSION MANAGEMENT</h6>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="sessionTimeout" class="form-label">Timeout (Minutes)</label>
+                                    <input type="number" class="form-control" id="sessionTimeout" min="5" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="maxLoginAttempts" class="form-label">Max Attempts</label>
+                                    <input type="number" class="form-control" id="maxLoginAttempts" min="1" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    
+                    <div class="card settings-card">
+                        <div class="card-header">
+                            <i class="fas fa-bell section-icon"></i>Notification Settings
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="d-flex gap-4 mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="emailNotif">
+                                    <label class="form-check-label" for="emailNotif">Email</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="smsNotif">
+                                    <label class="form-check-label" for="smsNotif">SMS</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="senderEmail" class="form-label">Sender Email</label>
+                                <input type="email" class="form-control" id="senderEmail">
+                            </div>
+                            <div class="mb-2">
+                                <label for="apiKey" class="form-label">API Key</label>
+                                <input type="password" class="form-control" id="apiKey">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card settings-card">
+                        <div class="card-header">
+                            <i class="fas fa-database section-icon"></i>Backup & Data
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" role="switch" id="autoBackup">
+                                <label class="form-check-label" for="autoBackup">Auto Backup</label>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="backupFreq" class="form-label">Frequency</label>
+                                <select class="form-select" id="backupFreq">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="button" class="btn btn-outline-success" id="btnDownloadBackup">
+                                    <i class="fas fa-download me-2"></i>Download Latest Backup
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"><i class="fas fa-redo me-2"></i>Trigger New Backup</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card settings-card">
+                        <div class="card-header">
+                            <i class="fas fa-palette section-icon"></i>UI Preferences
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="mb-3">
+                                <label class="form-label d-block">Theme</label>
+                                <div class="btn-group w-100" role="group">
+                                    <input type="radio" class="btn-check" name="theme" id="themeLight" value="light" autocomplete="off">
+                                    <label class="btn btn-outline-secondary" for="themeLight"><i class="fas fa-sun me-1"></i>Light</label>
+                                  
+                                    <input type="radio" class="btn-check" name="theme" id="themeDark" value="dark" autocomplete="off">
+                                    <label class="btn btn-outline-secondary" for="themeDark"><i class="fas fa-moon me-1"></i>Dark</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="accentColor" class="form-label">Accent Color</label>
+                                <input type="color" class="form-control form-control-color" id="accentColor" value="#51CCF9">
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="layoutStyle" class="form-label">Layout Style</label>
+                                <select class="form-select" id="layoutStyle">
+                                    <option value="comfortable">Comfortable</option>
+                                    <option value="compact">Compact</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="fas fa-check-circle me-2"></i> Settings saved successfully!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="./admin-settings.js">
+        
+    </script>
+</body>
+</html>
