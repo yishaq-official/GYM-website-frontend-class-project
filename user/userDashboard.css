@@ -1,0 +1,97 @@
+:root {
+            --primary-color: #51CCF9; /* Bright Cyan/Blue */
+            --primary-dark: #3db0da; 
+            --bg-body: #f8f9fa; /* Light mode background */
+            --bg-card: #ffffff;
+            --text-main: #212529;
+            --text-muted: #6c757d;
+            --nav-bg: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+        }
+
+        /* Dark Theme Overrides */
+        body.dark-mode {
+            --bg-body: #121212;
+            --bg-card: #252525;
+            --text-main: #f8f9fa;
+            --text-muted: #adb5bd;
+            --nav-bg: #1f1f1f;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--input-border);
+            border-radius: 12px;
+            color: var(--text-main);
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: var(--nav-bg);
+            border-bottom: 1px solid var(--input-border);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .navbar-brand, .nav-link, #theme-toggle {
+            color: var(--text-main) !important;
+            transition: color 0.3s;
+        }
+        
+        .navbar-brand:hover, .nav-link:hover, #theme-toggle:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        /* Theme Toggle Button */
+        #theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            padding: 0 5px;
+        }
+        
+        /* Dashboard Specific Styles */
+        .dashboard-container {
+            padding-top: 20px;
+            padding-bottom: 50px;
+            
+        }
+
+        .status-badge {
+            font-size: 0.9em;
+            font-weight: 700;
+            padding: 0.5em 0.8em;
+            border-radius: 6px;
+            
+        }
+        
+        /* Quick Actions Button */
+        .btn-quick-action {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-quick-action:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-card);
+        }
+        .p{
+            color: var(--text-main);
+        }
