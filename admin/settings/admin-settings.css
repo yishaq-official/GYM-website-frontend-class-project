@@ -1,0 +1,54 @@
+body {
+            background-color: #f4f7f9;
+            font-family: 'Inter', sans-serif;
+        }
+        .settings-card {
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+        .settings-card:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        }
+        .card-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 600;
+            padding: 15px 20px;
+            color: #333;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #495057;
+            font-size: 0.9rem;
+        }
+        .section-icon {
+            width: 25px;
+            text-align: center;
+            margin-right: 10px;
+            color: #51CCF9; 
+        }
+        .form-check-input:checked {
+            background-color: #51CCF9;
+            border-color: #51CCF9;
+        }
+        .btn-primary {
+            background-color: #51CCF9;
+            border-color: #51CCF9;
+            color: #000;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background-color: #3db0da;
+            border-color: #3db0da;
+        }
+        .form-control-color {
+            height: 40px;
+            width: 100%;
+            max-width: 120px;
+            padding: 4px;
+            border-radius: 6px;
+        }
